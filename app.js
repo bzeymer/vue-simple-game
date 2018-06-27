@@ -91,26 +91,20 @@ new Vue({
             this.log = [];
         },
         checkHealth: function() {
-            let dead = [];
-
-            if (this.health.monster <= 0) {
+            if (this.health.monster <= 0 && this.health.player <= 0) {
                 this.health.monster = 0;
-                dead.push("monster");
-            }
-            if (this.health.player <= 0) {
-                this.health.player = 0;
-                dead.push("player");
-            }
-
-            if (dead.length === 2) {
                 this.addToLog(`It's a TIE!`, 'black');
                 this.end();
-            } else if (dead[0] === "monster") {
+            }
+            else if (this.health.monster <= 0) {
+                this.health.monster = 0;
                 this.addToLog(`You won! :D`, 'green');
-                this.end();                
-            } else if (dead[0] === "player") {
+                this.end();  
+            }
+            else if (this.health.player <= 0) {
+                this.health.player = 0;
                 this.addToLog(`You lost! :(`, 'red');
-                this.end();                
+                this.end();
             }
         },
         end: function() {
