@@ -106,10 +106,10 @@ new Vue({
                 this.addToLog(`It's a TIE!`, 'black');
                 this.end();
             } else if (dead[0] === "monster") {
-                this.addToLog(`You win! :D`, 'green');
+                this.addToLog(`You won! :D`, 'green');
                 this.end();                
             } else if (dead[0] === "player") {
-                this.addToLog(`You lose! :(`, 'red');
+                this.addToLog(`You lost! :(`, 'red');
                 this.end();                
             }
         },
