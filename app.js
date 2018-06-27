@@ -48,22 +48,38 @@ new Vue({
         //Private methods
         monsterAttack: function() {
             var damage = Math.floor(Math.random() * MONSTER_DMG);
-            this.addToLog(`Monster attacks you for ${damage} damage`, MONSTER_DMG_COLOR);
+            if (damage === 0 ) {
+                this.addToLog(`Monster attack misses you`, PLAYER_DMG_COLOR);
+            } else {
+                this.addToLog(`Monster attacks you for ${damage} damage`, MONSTER_DMG_COLOR);
+            }
             this.health.player -= damage;
         },
         playerAttack: function() {
-            var damage = Math.floor(Math.random() * PLAYER_DMG);
-            this.addToLog(`You attack monster for ${damage} damage`, PLAYER_DMG_COLOR);
+            var damage = Math.floor(Math.random() * PLAYER_DMG);            
+            if (damage === 0 ) {
+                this.addToLog(`Your attack misses the monster`, MONSTER_DMG_COLOR);
+            } else {
+                this.addToLog(`You attack monster for ${damage} damage`, PLAYER_DMG_COLOR);
+            }
             this.health.monster -= damage;
         },
         playerSpecial: function() {
             var damage = Math.floor(Math.random() * PLAYER_SPECIAL);
-            this.addToLog(`You special attack monster for ${damage} damage`, PLAYER_SPECIAL_COLOR);
+            if (damage === 0 ) {
+                this.addToLog(`Your special attack misses the monster`, MONSTER_DMG_COLOR);
+            } else {
+                this.addToLog(`You special attack monster for ${damage} damage`, PLAYER_SPECIAL_COLOR);
+            }
             this.health.monster -= damage;
         },
         playerHeal: function() {
             var heal = Math.floor(Math.random() * PLAYER_HEAL);
-            this.addToLog(`You heal yourself ${heal} damage`, PLAYER_HEAL_COLOR);
+            if (heal === 0 ) {
+                this.addToLog(`Your spell fizzles`, 'black');
+            } else {
+                this.addToLog(`You heal yourself ${heal} damage`, PLAYER_HEAL_COLOR);
+            }
             this.health.player += heal;
             if (this.health.player > 100) {
                 this.health.player = 100;
