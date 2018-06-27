@@ -39,7 +39,7 @@
             <button id="start-game" @click="start">START NEW GAME</button>
         </div>
     </section>
-    <section id="log" class="row log" v-if="log.length > 0">
+    <section ref="log" class="row log" v-if="log.length > 0">
         <div class="small-12 columns">
             <ul>
                 <li v-for="entry in log" :style="{color: entry.color}" class="turn">

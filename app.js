@@ -118,10 +118,7 @@ new Vue({
         },
         scrollToBottom: function updateScroll(){
             setTimeout(() => {
-                var element = document.getElementById("log");
-                if (element) {
-                    element.scrollTop = element.scrollHeight;
-                }
+                this.$refs.log.scrollTop = this.$refs.log.scrollHeight;
             }, 0);
         }
     }
